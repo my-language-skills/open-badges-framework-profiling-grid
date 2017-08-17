@@ -9,8 +9,8 @@
  * @link       https://mylanguageskills.wordpress.com/
  * @since      1.0.0
  *
- * @package    B4l_Portfolio
- * @subpackage B4l_Portfolio/includes
+ * @package    B4l_Profiling_Grid_For_Teachers
+ * @subpackage B4l_Profiling_Grid_For_Teachers/includes
  */
 
 /**
@@ -23,11 +23,11 @@
  * version of the plugin.
  *
  * @since      1.0.0
- * @package    B4l_Portfolio
- * @subpackage B4l_Portfolio/includes
- * @author     MyLanguageSkills <	mylanguageskills@hotmail.com>
+ * @package    B4l_Profiling_Grid_For_Teachers
+ * @subpackage B4l_Profiling_Grid_For_Teachers/includes
+ * @author     My Language Skills <colomett@gmail.com>
  */
-class B4l_Portfolio {
+class B4l_Profiling_Grid_For_Teachers {
 
 	/**
 	 * The loader that's responsible for maintaining and registering all hooks that power
@@ -35,7 +35,7 @@ class B4l_Portfolio {
 	 *
 	 * @since    1.0.0
 	 * @access   protected
-	 * @var      B4l_Portfolio_Loader    $loader    Maintains and registers all hooks for the plugin.
+	 * @var      B4l_Profiling_Grid_For_Teachers_Loader    $loader    Maintains and registers all hooks for the plugin.
 	 */
 	protected $loader;
 
@@ -68,7 +68,7 @@ class B4l_Portfolio {
 	 */
 	public function __construct() {
 
-		$this->plugin_name = 'b4l-portfolio';
+		$this->plugin_name = 'b4l-profiling-grid-for-teachers';
 		$this->version = '1.0.0';
 
 		$this->load_dependencies();
@@ -83,10 +83,10 @@ class B4l_Portfolio {
 	 *
 	 * Include the following files that make up the plugin:
 	 *
-	 * - B4l_Portfolio_Loader. Orchestrates the hooks of the plugin.
-	 * - B4l_Portfolio_i18n. Defines internationalization functionality.
-	 * - B4l_Portfolio_Admin. Defines all hooks for the admin area.
-	 * - B4l_Portfolio_Public. Defines all hooks for the public side of the site.
+	 * - B4l_Profiling_Grid_For_Teachers_Loader. Orchestrates the hooks of the plugin.
+	 * - B4l_Profiling_Grid_For_Teachers_i18n. Defines internationalization functionality.
+	 * - B4l_Profiling_Grid_For_Teachers_Admin. Defines all hooks for the admin area.
+	 * - B4l_Profiling_Grid_For_Teachers_Public. Defines all hooks for the public side of the site.
 	 *
 	 * Create an instance of the loader which will be used to register the hooks
 	 * with WordPress.
@@ -100,51 +100,51 @@ class B4l_Portfolio {
 		 * The class responsible for orchestrating the actions and filters of the
 		 * core plugin.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-b4l-portfolio-loader.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-b4l-profiling-grid-for-teachers-loader.php';
 
 		/**
 		 * The class responsible for defining internationalization functionality
 		 * of the plugin.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-b4l-portfolio-i18n.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-b4l-profiling-grid-for-teachers-i18n.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-b4l-portfolio-admin.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-b4l-profiling-grid-for-teachers-admin.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the public-facing
 		 * side of the site.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-b4l-portfolio-public.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-b4l-profiling-grid-for-teachers-public.php';
 
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/initialisation/custom_post_student_portfolio.php';
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/initialisation/custom_post_teacher_portfolio.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/initialisation/custom_post_student_profiling_grid.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/initialisation/custom_post_teacher_profiling_grid.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/initialisation/custom_roles.php';
 
-		function portfolios_admin_menu() {
+		function profiling_grids_admin_menu() {
 	    add_menu_page(
-	        'Portfolios',
-	        'Portfolios',
+	        'Profiling Grids',
+	        'Profiling Grids',
 	        'read',
-	        'portfolios',
+	        'profiling_grids_menu',
 	        '',
 	        plugins_url('../images/portfolios.png', __FILE__),
-					16
+					17
 	    );
 		}
 
-		add_action( 'admin_menu', 'portfolios_admin_menu' );
+		add_action( 'admin_menu', 'profiling_grids_admin_menu' );
 
-		$this->loader = new B4l_Portfolio_Loader();
+		$this->loader = new B4l_Profiling_Grid_For_Teachers_Loader();
 
 	}
 
 	/**
 	 * Define the locale for this plugin for internationalization.
 	 *
-	 * Uses the B4l_Portfolio_i18n class in order to set the domain and to register the hook
+	 * Uses the B4l_Profiling_Grid_For_Teachers_i18n class in order to set the domain and to register the hook
 	 * with WordPress.
 	 *
 	 * @since    1.0.0
@@ -152,7 +152,7 @@ class B4l_Portfolio {
 	 */
 	private function set_locale() {
 
-		$plugin_i18n = new B4l_Portfolio_i18n();
+		$plugin_i18n = new B4l_Profiling_Grid_For_Teachers_i18n();
 
 		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
 
@@ -167,7 +167,7 @@ class B4l_Portfolio {
 	 */
 	private function define_admin_hooks() {
 
-		$plugin_admin = new B4l_Portfolio_Admin( $this->get_plugin_name(), $this->get_version() );
+		$plugin_admin = new B4l_Profiling_Grid_For_Teachers_Admin( $this->get_plugin_name(), $this->get_version() );
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
@@ -183,7 +183,7 @@ class B4l_Portfolio {
 	 */
 	private function define_public_hooks() {
 
-		$plugin_public = new B4l_Portfolio_Public( $this->get_plugin_name(), $this->get_version() );
+		$plugin_public = new B4l_Profiling_Grid_For_Teachers_Public( $this->get_plugin_name(), $this->get_version() );
 
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
@@ -214,7 +214,7 @@ class B4l_Portfolio {
 	 * The reference to the class that orchestrates the hooks with the plugin.
 	 *
 	 * @since     1.0.0
-	 * @return    B4l_Portfolio_Loader    Orchestrates the hooks of the plugin.
+	 * @return    B4l_Profiling_Grid_For_Teachers_Loader    Orchestrates the hooks of the plugin.
 	 */
 	public function get_loader() {
 		return $this->loader;

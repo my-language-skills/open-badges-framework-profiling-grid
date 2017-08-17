@@ -22,7 +22,7 @@
  * @link       https://mylanguageskills.wordpress.com/
  * @since      1.0.0
  *
- * @package    B4l_Portfolio
+ * @package    B4l_Profiling_Grid_For_Teachers
  */
 
 // If uninstall not called from WordPress, then exit.

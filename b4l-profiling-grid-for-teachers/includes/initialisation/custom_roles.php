@@ -17,6 +17,9 @@ function add_portfolios_capabilities() {
     // ADMINISTRATOR ROLE
     $admin = get_role('administrator');
 
+    $admin->add_cap('read');
+    $admin->add_cap('portfolios');
+    $admin->add_cap('student_portfolio');
     $admin->add_cap('edit_student_portfolio');
     $admin->add_cap('edit_student_portfolios');
     $admin->add_cap('edit_other_student_portfolios');

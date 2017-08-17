@@ -8,8 +8,8 @@
  * @link       https://mylanguageskills.wordpress.com/
  * @since      1.0.0
  *
- * @package    B4l_Portfolio
- * @subpackage B4l_Portfolio/public/partials
+ * @package    B4l_Profiling_Grid_For_Teachers
+ * @subpackage B4l_Profiling_Grid_For_Teachers/public/partials
  */
 ?>
 

@@ -1,7 +1,7 @@
 <?php
 
 /*
- Plugin Name: Teacher Portfolio Plugin
+ Plugin Name: Teacher Profiling Grid Plugin
  Description: Plugin for assigning the grades to teachers on the basis of their progress
  Version: 1.0
  Author: Muhammad Uzair
@@ -14,7 +14,7 @@ wp_enqueue_script('jquery-ui');
 wp_enqueue_script('jquery-ui-tabs');
 wp_enqueue_style( 'wp-admin' );
 
-require_once( 'create-portfolio.php');
+require_once( 'create-profiling_grid.php');
 
 function check_teacher($val) {
 	global $post;
@@ -24,7 +24,7 @@ function check_teacher($val) {
 	else
 		$checkbox_values = array();
 
-		if(in_array($val, $checkbox_values))
+	if(in_array($val, $checkbox_values))
 		return " checked";
 }
 
@@ -32,16 +32,16 @@ function custom_post_teacher_portfolio() {
 
 // Set UI labels for Custom Post Type
 	$labels = array(
-		'name'                => 'Teacher Portfolio', 'Post Type General Name',
-		'singular_name'       => 'Teacher Portfolio', 'Post Type Singular Name',
-		'menu_name'           => 'Teacher Portfolio',
-		'parent_item_colon'   => 'Parent Teacher Portfolio',
-		'all_items'           => 'Teacher Portfolios',
-		'view_item'           => 'View Teacher Portfolio',
-		'add_new_item'        => 'Add New Teacher Portfolio',
-		'edit_item'           => 'Edit Teacher Portfolio',
-		'update_item'         => 'Update Teacher Portfolio',
-		'search_items'        => 'Search Teacher Portfolios',
+		'name'                => 'Teacher Profiling Grid',
+		'singular_name'       => 'Teacher Profiling Grid',
+		'menu_name'           => 'Teacher Profiling Grid',
+		'parent_item_colon'   => 'Parent Teacher Profiling Grid',
+		'all_items'           => 'Teacher Profiling Grids',
+		'view_item'           => 'View Teacher Profiling Grid',
+		'add_new_item'        => 'Add New Teacher Profiling Grid',
+		'edit_item'           => 'Edit Teacher Profiling Grid',
+		'update_item'         => 'Update Teacher Profiling Grid',
+		'search_items'        => 'Search Teacher Profiling Grids',
 		'not_found'           => 'Not Found',
 		'not_found_in_trash'  => 'Not found in Trash'
 	);
@@ -53,7 +53,7 @@ function custom_post_teacher_portfolio() {
 		'description'         => 'A custom post to assign language levels to teacher based on their proficiency.',
 		'labels'              => $labels,
 		// Features this CPT supports in Post Editor
-		'supports'            => array( 'title', 'editor', ),
+		'supports'            => array( 'title', 'editor' ),
 		/* A hierarchical CPT is like Pages and can have
 		* Parent and child items. A non-hierarchical CPT
 		* is like Posts.
@@ -61,7 +61,7 @@ function custom_post_teacher_portfolio() {
 		'hierarchical'        => false,
 		'public'              => true,
 		'show_ui'             => true,
-		'show_in_menu'        => 'portfolios',
+		'show_in_menu'        => 'profiling_grids_menu',
 		'show_in_nav_menus'   => true,
 		'show_in_admin_bar'   => true,
 		'menu_position'       => 5,
@@ -94,14 +94,14 @@ function custom_post_teacher_portfolio() {
 * unnecessarily executed.
 */
 
-add_action( 'init', 'custom_post_teacher_portfolio', 0 );
+add_action( 'init', 'custom_post_teacher_portfolio');
 
 
 
 function metabox_teacher()
 {
 	add_action('add_meta_boxes', function(){
-		add_meta_box('teacher', 'Teacher Portfolio', 'teacher_grades', 'teacher_portfolio');
+		add_meta_box('teacher', 'Teacher portfolio', 'teacher_grades', 'teacher_portfolio');
 	});
 
 	function teacher_grades($post){
@@ -245,7 +245,7 @@ function metabox_teacher()
 
 			<!--</br></br><p id="result">Result</p></br>-->
 
-			<?php include(plugin_dir_path( dirname( __FILE__ ) ) . 'utils/js_teacher_portfolio.php'); ?>
+			<?php include(plugin_dir_path( dirname( __FILE__ ) ) . 'utils/js_teacher_profiling_grid.php'); ?>
 			<?php include(plugin_dir_path( dirname( __FILE__ ) ) . 'utils/js_send_badge.php'); ?>
 			<?php include(plugin_dir_path( dirname( __FILE__ ) ) . 'utils/style.php'); ?>
 
@@ -394,8 +394,8 @@ function add_meta_box_teacher_portfolio_language(){
 function meta_box_teacher_portfolio_language($post){
 	if(is_plugin_active("badges-issuer-for-wp/badges-issuer-for-wp.php")) {
 		$val = "";
-		if(get_post_meta($post->ID,'_portofolio_language',true))
-		  $val = get_post_meta($post->ID,'_portofolio_language',true);
+		if(get_post_meta($post->ID,'_portfolio_language',true))
+		  $val = get_post_meta($post->ID,'_portfolio_language',true);
 
 		display_languages_select_form(true, $val);
 	}
@@ -418,22 +418,22 @@ add_action('save_post', function($id){
 		update_post_meta($post->ID, "teacher_portfolio", array());
 
 	if(isset($_POST['language']))
-		update_post_meta($post->ID, "_portofolio_language", $_POST['language']);
+		update_post_meta($post->ID, "_portfolio_language", $_POST['language']);
 
 });
 
 ///////////////////////////////////////////////
 ///////////////////////////////////////////////
-add_action('admin_menu', 'tp_add_settings');
+add_action('admin_menu', 'tp_portfolio_add_settings');
 
-function tp_add_settings(){
+function tp_portfolio_add_settings(){
 	add_submenu_page(
 		'edit.php?post_type=teacher_portfolio',
-		'Teacher Portfolio Settings',
+		'Teacher portfolio Settings',
 		'Settings',
 		'manage_options',
 		'create_portfolio',
-		'create_portfolio_callback' );
+		'create_profiling_grid_callback' );
 }
 
 ?>

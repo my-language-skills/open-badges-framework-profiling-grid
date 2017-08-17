@@ -13,7 +13,7 @@ function printResult(badge) {
   global $post;
   if(is_plugin_active("badges-issuer-for-wp/badges-issuer-for-wp.php")) {
   ?>
-    var content = content+'<center><button onclick="sendBadgePortfolio'+"('"+badge+"', '<?php echo get_post_meta($post->ID,'_portofolio_language',true); ?>')"+'">Send this badge to yourself</button></center><br />';
+    var content = content+'<center><button onclick="sendBadgePortfolio'+"('"+badge+"', '<?php echo get_post_meta($post->ID,'_portfolio_language',true); ?>')"+'">Send this badge to yourself</button></center><br />';
   <?php
   }
   ?>

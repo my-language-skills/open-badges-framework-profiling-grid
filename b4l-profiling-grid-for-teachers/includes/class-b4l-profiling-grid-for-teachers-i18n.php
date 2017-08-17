@@ -9,8 +9,8 @@
  * @link       https://mylanguageskills.wordpress.com/
  * @since      1.0.0
  *
- * @package    B4l_Portfolio
- * @subpackage B4l_Portfolio/includes
+ * @package    B4l_Profiling_Grid_For_Teachers
+ * @subpackage B4l_Profiling_Grid_For_Teachers/includes
  */
 
 /**
@@ -20,11 +20,11 @@
  * so that it is ready for translation.
  *
  * @since      1.0.0
- * @package    B4l_Portfolio
- * @subpackage B4l_Portfolio/includes
- * @author     MyLanguageSkills <	mylanguageskills@hotmail.com>
+ * @package    B4l_Profiling_Grid_For_Teachers
+ * @subpackage B4l_Profiling_Grid_For_Teachers/includes
+ * @author     My Language Skills <colomett@gmail.com>
  */
-class B4l_Portfolio_i18n {
+class B4l_Profiling_Grid_For_Teachers_i18n {
 
 
 	/**
@@ -35,7 +35,7 @@ class B4l_Portfolio_i18n {
 	public function load_plugin_textdomain() {
 
 		load_plugin_textdomain(
-			'b4l-portfolio',
+			'b4l-profiling-grid-for-teachers',
 			false,
 			dirname( dirname( plugin_basename( __FILE__ ) ) ) . '/languages/'
 		);
