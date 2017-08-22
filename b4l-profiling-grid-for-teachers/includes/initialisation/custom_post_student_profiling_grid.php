@@ -97,13 +97,60 @@ add_action( 'init', 'custom_post_student_portfolio');
 function metabox_student()
 {
 	add_action('add_meta_boxes', function(){
-		add_meta_box('student', 'Student portfolio', 'student_grades', 'student_portfolio');
+		add_meta_box('student', 'Student Grid Badges', 'student_grades', 'student_portfolio');
 	});
 
 	function student_grades($post){
-		?>
+		include(plugin_dir_path( dirname( __FILE__ ) ) . 'utils/js_send_badge.php');
+		include(plugin_dir_path( dirname( __FILE__ ) ) . 'utils/style.php');
 
+		$descriptions = array(
+			'A1' => "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+			Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+			Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+			Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+			'A2' => "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+			Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+			Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+			Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+			'B1' => "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+			Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+			Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+			Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+			'B2' => "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+			Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+			Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+			Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+			'C1' => "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+			Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+			Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+			Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+			'C2' => "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+			Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+			Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+			Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+		);
 
+		foreach ($descriptions as $level=>$description) {
+			?>
+			<div style="overflow:hidden;">
+				<div id="result_<?php echo $level; ?>" style="float:left;">
+					<input type="checkbox" name="input_badge_student_grid_name" id="badge_<?php echo $level; ?>" class="input-badge input-hidden" value="<?php echo $level; ?>"/>
+					<label for="badge_<?php echo $level; ?>">
+						<img id="image_<?php echo $level; ?>" src="<?php echo plugin_dir_url( __FILE__ ); ?>../../images/badges/student_levels/<?php echo $level; ?>.png" width="100px" height="100px" />
+					</label>
+				</div>
+				<div style="float:left;">
+					<p id="description_<?php echo $level; ?>"><?php echo $description; ?></p>
+				</div>
+			</div>
+			<?php
+			}
+			?>
+			<br />
+			<div id="result_send_badge_student_grid">
+				<input type="button" id="send_badges_student_grid" onclick="javascript:sendBadgesStudentGrid('<?php echo get_post_meta($post->ID,'_portfolio_language',true); ?>')" class="button button-primary" value="Send badges to yourself" />
+			</div>
 		<?php
 	}
 }

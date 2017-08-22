@@ -270,7 +270,9 @@ function metabox_teacher()
 	          </ul>
 					</h2>
         </div>
+
 				<div id="tabs-1">
+					<input type="hidden" id="post_ID" value="<?php echo $post->ID; ?>" />
 					<br />
 					<b>&#9679;Language Proficiency</b></br>
 						<?php
@@ -289,7 +291,15 @@ function metabox_teacher()
 								$counter_la++;
 							}
 						?>
+					<br />
 
+						Evidence :
+						<?php
+						if(get_post_meta($post->ID,'file_tab_a',true))
+							echo get_post_meta($post->ID,'file_tab_a',true);
+
+						echo ' <input name="file_tab_a" accept=".pdf, .png, .jpeg, .jpg" type="file" />';
+						?>
 				</div>
 				<div id="tabs-2">
 					<br />
@@ -318,6 +328,14 @@ function metabox_teacher()
 								$counter++;
 								$counter_te++;
 							}
+						?>
+						<br />
+						Evidence :
+						<?php
+						if(get_post_meta($post->ID,'file_tab_b',true))
+							echo get_post_meta($post->ID,'file_tab_b',true);
+
+						echo ' <input name="file_tab_b" accept=".pdf, .png, .jpeg, .jpg" type="file" />';
 						?>
 				</div>
 				<div id="tabs-3">
@@ -356,6 +374,14 @@ function metabox_teacher()
 								$counter_ast++;
 							}
 						?>
+						<br />
+						Evidence :
+						<?php
+						if(get_post_meta($post->ID,'file_tab_c',true))
+							echo get_post_meta($post->ID,'file_tab_c',true);
+
+						echo ' <input name="file_tab_c" accept=".pdf, .png, .jpeg, .jpg" type="file" />';
+						?>
 				</div>
 				<div id="tabs-4">
 					<br />
@@ -375,7 +401,20 @@ function metabox_teacher()
 								$counter_dm++;
 							}
 						?>
+						<br />
+						Evidence :
+						<?php
+						if(get_post_meta($post->ID,'file_tab_d',true))
+							echo get_post_meta($post->ID,'file_tab_d',true);
+
+						echo ' <input name="file_tab_d" accept=".pdf, .png, .jpeg, .jpg" type="file" />';
+						?>
 				</div>
+
+				<div id="result_upload_files">
+					<input id="upload_files_button" type="button" class="button button-primary" value="Upload file" />
+				</div>
+
 			</div>
 		<br />
 		<?php
