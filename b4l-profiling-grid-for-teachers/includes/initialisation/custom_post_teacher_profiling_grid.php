@@ -436,7 +436,7 @@ function meta_box_teacher_portfolio_language($post){
 		if(get_post_meta($post->ID,'_portfolio_language',true))
 		  $val = get_post_meta($post->ID,'_portfolio_language',true);
 
-		display_languages_select_form(true, $val);
+		display_languages_select_form($category="most-important-languages", $language_selected=$val, $multiple=false);
 	}
 }
 
