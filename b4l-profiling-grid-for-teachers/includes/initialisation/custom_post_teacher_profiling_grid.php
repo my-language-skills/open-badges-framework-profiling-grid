@@ -167,7 +167,7 @@ function metabox_teacher()
 			"core_competencies" => array(
 					"mks" => array(
 						11 => "Sensitisation to learning theories and features of language. Familiarity with a limited range of techniques and materials for one or two levels.",
-						21 => "Basic understanding of learning theories and features of language. Familiarity with techniques and materials for 2+ levels. Select new techniques & materials with <spanadvice from colleagues.",
+						21 => "Basic understanding of learning theories and features of language. Familiarity with techniques and materials for 2+ levels. Select new techniques & materials with advice from colleagues.",
 						31 => "Familiarity with theories of language learning and with learning styles. Familiarity with an expanding range of techniques and materials. Choose which to apply based on the needs of a particular group. Evaluate usefulness of techniques and materials in teaching context.",
 						41 => "Familiarity with learning theory, learning styles and learning strategies. Identify the theoretical rationale behind a wide range of techniques and materials, with which familiar. Evaluate appropriateness of techniques and materials in different teaching situations.",
 						51 => "Good familiarity with teaching approaches, learning styles, strategies. Provide theoretical rationale for teaching approach and for a very wide range of techniques / materials. Evaluate materials effectively from practical and theoretical perspectives.",
@@ -228,215 +228,279 @@ function metabox_teacher()
 
 
 		<p>
-		"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-		Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-		Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-		Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+			"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+			Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+			Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+			Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+		</p>
 
-
-		</br></br>
-		<div id="result_content" style="float:right;">
+		<div id="result_content">
 			<center><h1>Current Result</h1></center>
-			<div id="result"></div>
 		</div>
-		</br>
 
-			<!--</br></br><p id="result">Result</p></br>-->
+		<?php include(plugin_dir_path( dirname( __FILE__ ) ) . 'utils/js_teacher_profiling_grid.php'); ?>
+		<?php include(plugin_dir_path( dirname( __FILE__ ) ) . 'utils/js_send_badge.php'); ?>
+		<?php include(plugin_dir_path( dirname( __FILE__ ) ) . 'utils/style.php'); ?>
 
-			<?php include(plugin_dir_path( dirname( __FILE__ ) ) . 'utils/js_teacher_profiling_grid.php'); ?>
-			<?php include(plugin_dir_path( dirname( __FILE__ ) ) . 'utils/js_send_badge.php'); ?>
-			<?php include(plugin_dir_path( dirname( __FILE__ ) ) . 'utils/style.php'); ?>
+		<script>
+	        jQuery(document).ready(function(jQuery) {
+		        jQuery('#tabs').tabs();
+		        jQuery(".nav-tab").click(function(){
+			        jQuery(".nav-tab").removeClass("nav-tab-active");
+			        jQuery(this).addClass("nav-tab-active");
+	        	});
+	        });
+	    </script>
 
-			<script>
-        jQuery(document).ready(function(jQuery) {
-          jQuery('#tabs').tabs();
-          jQuery(".nav-tab").click(function(){
-            jQuery(".nav-tab").removeClass("nav-tab-active");
-            jQuery(this).addClass("nav-tab-active");
-          });
-        });
-      </script>
+		<div id="tabs" style="border: 0px;">
 
-			<div id="tabs">
-        <div id="tabs-elements">
-					<h2 class="nav-tab-wrapper">
+			<h2 class="nav-tab-wrapper">
 	          <ul>
-	            <li><a href="#tabs-1"><div class="nav-tab nav-tab-active"><?php _e( 'Language','b4l-portofolio' ); ?></div></a></li>
-	            <li><a href="#tabs-2"><div class="nav-tab"><?php _e( 'Qualifications','b4l-portofolio' ); ?></div></a></li>
-	            <li><a href="#tabs-3"><div class="nav-tab"><?php _e( 'Core Competencies','b4l-portofolio' ); ?></div></a></li>
-							<li><a href="#tabs-4"><div class="nav-tab"><?php _e( 'Complementary Skills','b4l-portofolio' ); ?></div></a></li>
+	            <li style="border: 0px;"><a href="#tabs-1" class="nav-tab nav-tab-active"><?php _e( 'Language','b4l-portofolio' ); ?></a></li>
+	            <li style="border: 0px;"><a href="#tabs-2" class="nav-tab"><?php _e( 'Qualifications','b4l-portofolio' ); ?></a></li>
+	            <li style="border: 0px;"><a href="#tabs-3" class="nav-tab"><?php _e( 'Core Competencies','b4l-portofolio' ); ?></a></li>
+				<li style="border: 0px;"><a href="#tabs-4" class="nav-tab"><?php _e( 'Complementary Skills','b4l-portofolio' ); ?></a></li>
 	          </ul>
-					</h2>
-        </div>
+			</h2>
 
-				<div id="tabs-1">
-					<input type="hidden" id="post_ID" value="<?php echo $post->ID; ?>" />
-					<br />
-					<b>&#9679;Language Proficiency</b></br>
-						<?php
-							for($i = 0 ; $i < count($t_portfolio["language"]["lp"]); $i++){
-								echo '<br>' . '<input type="checkbox" name="teacher_portfolio[]" id="lp'.$counter_lp.'" value="'.$value.$counter.'" style="margin-left: 30px;" ' . check_teacher($value.$counter) . '>' .  $t_portfolio["language"]["lp"][$i+1 . 1]. '</br>';
-								$counter++;
-								$counter_lp++;
-							}
-						?>
+			<div id="tabs-1" style="border: 0px;">
+				<input type="hidden" id="post_ID" value="<?php echo $post->ID; ?>"/>
+				<br>
 
-					<br><b>&#9679;Language Awareness</b><br>
-						<?php
-							for($i = 0 ; $i < count($t_portfolio["language"]["la"]); $i++){
-								echo '<br>'. '<input type="checkbox" name="teacher_portfolio[]" id="la'.$counter_la.'" value="'.$value.$counter.'"style="margin-left: 30px;" ' . check_teacher($value.$counter) . '>' .  $t_portfolio["language"]["la"][$i+1 . 1]. '</br>';
-								$counter++;
-								$counter_la++;
-							}
-						?>
-					<br />
+				<b>&#9679;Language Proficiency</b><br>
+				<?php
+					for($i = 0 ; $i < count($t_portfolio["language"]["lp"]); $i++){
+						echo '<br>' . '<input type="checkbox" name="teacher_portfolio[]" id="lp'.$counter_lp.'" value="'.$value.$counter.'" style="margin-left: 30px;" ' . check_teacher($value.$counter) . '>' .  $t_portfolio["language"]["lp"][$i+1 . 1]. '</br>';
+						$counter++;
+						$counter_lp++;
+					}
+				?>
+				<br>
 
-						Evidence :
-						<?php
-						if(get_post_meta($post->ID,'file_tab_a',true))
-							echo get_post_meta($post->ID,'file_tab_a',true);
+				<b>&#9679;Language Awareness</b><br>
+				<?php
+					for($i = 0 ; $i < count($t_portfolio["language"]["la"]); $i++){
+						echo '<br>'. '<input type="checkbox" name="teacher_portfolio[]" id="la'.$counter_la.'" value="'.$value.$counter.'"style="margin-left: 30px;" ' . check_teacher($value.$counter) . '>' .  $t_portfolio["language"]["la"][$i+1 . 1]. '</br>';
+						$counter++;
+						$counter_la++;
+					}
+				?>
+				<br>
 
-						echo ' <input name="file_tab_a" accept=".pdf, .png, .jpeg, .jpg" type="file" />';
-						?>
-				</div>
-				<div id="tabs-2">
-					<br />
-						<b>&#9679;Language Teacher Qualifications</b></br>
-							<?php
-							for($i = 0 ; $i < count($t_portfolio["qualifications"]["ltq"]); $i++){
-								echo '<br>'. '<input type="checkbox" name="teacher_portfolio[]" id="ltq'.$counter_ltq.'" value="'.$value.$counter.'"style="margin-left: 30px;" ' . check_teacher($value.$counter) . '>' .  $t_portfolio["qualifications"]["ltq"][$i+1 . 1]. '</br>';
-								$counter++;
-								$counter_ltq++;
-							}
-						?>
+				Evidence :
+				<?php
+					if(get_post_meta($post->ID,'file_tab_a',true)){
+						echo get_post_meta($post->ID,'file_tab_a',true);
+					}
 
-					<br><b>&#9679;Language Teaching Practice</b><br>
-						<?php
-							for($i = 0 ; $i < count($t_portfolio["qualifications"]["ltp"]); $i++){
-								echo '<br>'.  '<input type="checkbox" name="teacher_portfolio[]" id="ltp'.$counter_ltp.'" value="'.$value.$counter.'"style="margin-left: 30px;" ' . check_teacher($value.$counter) . '>' .  $t_portfolio["qualifications"]["ltp"][$i+1 . 1]. '</br>';
-								$counter++;
-								$counter_ltp++;
-							}
-						?>
-
-					<br><b>&#9679;Teaching Experience</b><br>
-						<?php
-							for($i = 0 ; $i < count($t_portfolio["qualifications"]["te"]); $i++){
-								echo '<br>'.  '<input type="checkbox" name="teacher_portfolio[]" id="te'.$counter_te.'" value="'.$value.$counter.'"style="margin-left: 30px;" ' . check_teacher($value.$counter) . '>' .  $t_portfolio["qualifications"]["te"][$i+1 . 1]. '</br>';
-								$counter++;
-								$counter_te++;
-							}
-						?>
-						<br />
-						Evidence :
-						<?php
-						if(get_post_meta($post->ID,'file_tab_b',true))
-							echo get_post_meta($post->ID,'file_tab_b',true);
-
-						echo ' <input name="file_tab_b" accept=".pdf, .png, .jpeg, .jpg" type="file" />';
-						?>
-				</div>
-				<div id="tabs-3">
-					<br />
-					<b>&#9679;Methodology: knowledge and skills</b></br>
-						<?php
-							for($i = 0 ; $i < count($t_portfolio["core_competencies"]["mks"]); $i++){
-								echo '<br>'.  '<input type="checkbox" name="teacher_portfolio[]" id="mks'.$counter_mks.'" value="'.$value.$counter.'"style="margin-left: 30px;" ' . check_teacher($value.$counter) . '>' .  $t_portfolio["core_competencies"]["mks"][$i+1 . 1]. '</br>';
-								$counter++;
-								$counter_mks++;
-							}
-						?>
-					<br><b>&#9679;Lesson and Course Planning</b><br>
-						<?php
-							for($i = 0 ; $i < count($t_portfolio["core_competencies"]["lcp"]); $i++){
-								echo '<br>'.  '<input type="checkbox" name="teacher_portfolio[]" id="lcp'.$counter_lcp.'" value="'.$value.$counter.'"style="margin-left: 30px;" ' . check_teacher($value.$counter) . '>' .  $t_portfolio["core_competencies"]["lcp"][$i+1 . 1]. '</br>';
-								$counter++;
-								$counter_lcp++;
-							}
-						?>
-
-					<br><b>&#9679;Interaction Management and Monitoring</b><br>
-						<?php
-							for($i = 0 ; $i < count($t_portfolio["core_competencies"]["imm"]); $i++){
-								echo '<br>'.  '<input type="checkbox" name="teacher_portfolio[]" id="imm'.$counter_imm.'" value="'.$value.$counter.'"style="margin-left: 30px;" ' . check_teacher($value.$counter) . '>' .  $t_portfolio["core_competencies"]["imm"][$i+1 . 1]. '</br>';
-								$counter++;
-								$counter_imm++;
-							}
-						?>
-
-					<br><b>&#9679;Assessment</b><br>
-						<?php
-							for($i = 0 ; $i < count($t_portfolio["core_competencies"]["ast"]); $i++){
-								echo '<br>'.  '<input type="checkbox" name="teacher_portfolio[]" id="ast'.$counter_ast.'" value="'.$value.$counter.'"style="margin-left: 30px;" ' . check_teacher($value.$counter) . '>' .  $t_portfolio["core_competencies"]["ast"][$i+1 . 1]. '</br>';
-								$counter++;
-								$counter_ast++;
-							}
-						?>
-						<br />
-						Evidence :
-						<?php
-						if(get_post_meta($post->ID,'file_tab_c',true))
-							echo get_post_meta($post->ID,'file_tab_c',true);
-
-						echo ' <input name="file_tab_c" accept=".pdf, .png, .jpeg, .jpg" type="file" />';
-						?>
-				</div>
-				<div id="tabs-4">
-					<br />
-					<b>&#9679;Teacher Development</b></br>
-						<?php
-							for($i = 0 ; $i < count($t_portfolio["complementary_skills"]["td"]); $i++){
-								echo '<br>'.  '<input type="checkbox" name="teacher_portfolio[]" id="td'.$counter_td.'" value="'.$value.$counter.'"style="margin-left: 30px;" ' . check_teacher($value.$counter) . '> ' .  $t_portfolio["complementary_skills"]["td"][$i+1 . 1]. '</br>';
-								$counter++;
-								$counter_td++;
-							}
-						?>
-					<br><b>&#9679;Digital Media</b><br>
-						<?php
-							for($i = 0 ; $i < count($t_portfolio["complementary_skills"]["dm"]); $i++){
-								echo '<br>'.  '<input type="checkbox" name="teacher_portfolio[]" id="dm'.$counter_dm.'" value="'.$value.$counter.'"style="margin-left: 30px;" ' . check_teacher($value.$counter) . '>' .  $t_portfolio["complementary_skills"]["dm"][$i+1 . 1]. '</br>';
-								$counter++;
-								$counter_dm++;
-							}
-						?>
-						<br />
-						Evidence :
-						<?php
-						if(get_post_meta($post->ID,'file_tab_d',true))
-							echo get_post_meta($post->ID,'file_tab_d',true);
-
-						echo ' <input name="file_tab_d" accept=".pdf, .png, .jpeg, .jpg" type="file" />';
-						?>
-				</div>
-
-				<div id="result_upload_files">
-					<input id="upload_files_button" type="button" class="button button-primary" value="Upload file" />
-				</div>
-
+					echo ' <input name="file_tab_a" accept=".pdf, .png, .jpeg, .jpg" type="file"/>';
+				?>
 			</div>
-		<br />
-		<?php
+
+			<div id="tabs-2" style="border: 0px;">
+				<br>
+				<b>&#9679;Language Teacher Qualifications</b><br>
+				<?php
+					for($i = 0 ; $i < count($t_portfolio["qualifications"]["ltq"]); $i++){
+						echo '<br>'. '<input type="checkbox" name="teacher_portfolio[]" id="ltq'.$counter_ltq.'" value="'.$value.$counter.'"style="margin-left: 30px;" ' . check_teacher($value.$counter) . '>' .  $t_portfolio["qualifications"]["ltq"][$i+1 . 1]. '</br>';
+						$counter++;
+						$counter_ltq++;
+					}
+				?>
+				<br>
+
+				<b>&#9679;Language Teaching Practice</b><br>
+				<?php
+					for($i = 0 ; $i < count($t_portfolio["qualifications"]["ltp"]); $i++){
+						echo '<br>'.  '<input type="checkbox" name="teacher_portfolio[]" id="ltp'.$counter_ltp.'" value="'.$value.$counter.'"style="margin-left: 30px;" ' . check_teacher($value.$counter) . '>' .  $t_portfolio["qualifications"]["ltp"][$i+1 . 1]. '</br>';
+						$counter++;
+						$counter_ltp++;
+					}
+				?>
+				<br>
+
+				<b>&#9679;Teaching Experience</b><br>
+				<?php
+					for($i = 0 ; $i < count($t_portfolio["qualifications"]["te"]); $i++){
+						echo '<br>'.  '<input type="checkbox" name="teacher_portfolio[]" id="te'.$counter_te.'" value="'.$value.$counter.'"style="margin-left: 30px;" ' . check_teacher($value.$counter) . '>' .  $t_portfolio["qualifications"]["te"][$i+1 . 1]. '</br>';
+						$counter++;
+						$counter_te++;
+					}
+				?>
+				<br>
+
+				Evidence :
+				<?php
+					if(get_post_meta($post->ID,'file_tab_b',true)){
+						echo get_post_meta($post->ID,'file_tab_b',true);
+					}
+
+					echo ' <input name="file_tab_b" accept=".pdf, .png, .jpeg, .jpg" type="file" />';
+				?>
+			</div>
+
+			<div id="tabs-3" style="border: 0px;">
+				<br>
+				<b>&#9679;Methodology: knowledge and skills</b><br>
+				<?php
+					for($i = 0 ; $i < count($t_portfolio["core_competencies"]["mks"]); $i++){
+						echo '<br>'.  '<input type="checkbox" name="teacher_portfolio[]" id="mks'.$counter_mks.'" value="'.$value.$counter.'"style="margin-left: 30px;" ' . check_teacher($value.$counter) . '>' .  $t_portfolio["core_competencies"]["mks"][$i+1 . 1]. '</br>';
+						$counter++;
+						$counter_mks++;
+					}
+				?>
+				<br>
+
+				<b>&#9679;Lesson and Course Planning</b><br>
+				<?php
+					for($i = 0 ; $i < count($t_portfolio["core_competencies"]["lcp"]); $i++){
+						echo '<br>'.  '<input type="checkbox" name="teacher_portfolio[]" id="lcp'.$counter_lcp.'" value="'.$value.$counter.'"style="margin-left: 30px;" ' . check_teacher($value.$counter) . '>' .  $t_portfolio["core_competencies"]["lcp"][$i+1 . 1]. '</br>';
+						$counter++;
+						$counter_lcp++;
+					}
+				?>
+				<br>
+
+				<b>&#9679;Interaction Management and Monitoring</b><br>
+				<?php
+					for($i = 0 ; $i < count($t_portfolio["core_competencies"]["imm"]); $i++){
+						echo '<br>'.  '<input type="checkbox" name="teacher_portfolio[]" id="imm'.$counter_imm.'" value="'.$value.$counter.'"style="margin-left: 30px;" ' . check_teacher($value.$counter) . '>' .  $t_portfolio["core_competencies"]["imm"][$i+1 . 1]. '</br>';
+						$counter++;
+						$counter_imm++;
+					}
+				?>
+				<br>
+
+				<b>&#9679;Assessment</b><br>
+				<?php
+					for($i = 0 ; $i < count($t_portfolio["core_competencies"]["ast"]); $i++){
+						echo '<br>'.  '<input type="checkbox" name="teacher_portfolio[]" id="ast'.$counter_ast.'" value="'.$value.$counter.'"style="margin-left: 30px;" ' . check_teacher($value.$counter) . '>' .  $t_portfolio["core_competencies"]["ast"][$i+1 . 1]. '</br>';
+						$counter++;
+						$counter_ast++;
+					}
+				?>
+				<br>
+
+				Evidence :
+				<?php
+					if(get_post_meta($post->ID,'file_tab_c',true))
+						echo get_post_meta($post->ID,'file_tab_c',true);
+
+					echo ' <input name="file_tab_c" accept=".pdf, .png, .jpeg, .jpg" type="file" />';
+				?>
+			</div>
+
+			<div id="tabs-4" style="border: 0px;">
+				<br>
+				<b>&#9679;Teacher Development</b><br>
+				<?php
+					for($i = 0 ; $i < count($t_portfolio["complementary_skills"]["td"]); $i++){
+						echo '<br>'.  '<input type="checkbox" name="teacher_portfolio[]" id="td'.$counter_td.'" value="'.$value.$counter.'"style="margin-left: 30px;" ' . check_teacher($value.$counter) . '> ' .  $t_portfolio["complementary_skills"]["td"][$i+1 . 1]. '</br>';
+						$counter++;
+						$counter_td++;
+					}
+				?>
+				<br>
+
+				<b>&#9679;Digital Media</b><br>
+				<?php
+					for($i = 0 ; $i < count($t_portfolio["complementary_skills"]["dm"]); $i++){
+						echo '<br>'.  '<input type="checkbox" name="teacher_portfolio[]" id="dm'.$counter_dm.'" value="'.$value.$counter.'"style="margin-left: 30px;" ' . check_teacher($value.$counter) . '>' .  $t_portfolio["complementary_skills"]["dm"][$i+1 . 1]. '</br>';
+						$counter++;
+						$counter_dm++;
+					}
+				?>
+				<br>
+					
+				Evidence :
+				<?php
+					if(get_post_meta($post->ID,'file_tab_d',true))
+						echo get_post_meta($post->ID,'file_tab_d',true);
+
+					echo ' <input name="file_tab_d" accept=".pdf, .png, .jpeg, .jpg" type="file" />';
+				?>
+			</div>
+
+			<div id="result_upload_files">
+				<input id="upload_files_button" type="button" class="button button-primary" value="Upload file" />
+			</div>
+		</div>
+		<br>
+	<?php
 	}
 }
 add_action('init', 'metabox_teacher');
 
 /* Adds the metabox teacher portfolio language into the badge custom post type */
+function metabox_teacher_portfolio_language(){
+	add_action('add_meta_boxes', function(){
+		add_meta_box('id_meta_box_teacher_portfolio_language', 'Teacher portfolio language', 'teacher_portfolio_language', 'teacher_portfolio', 'side', 'high');
+	});
 
-add_action('add_meta_boxes','add_meta_box_teacher_portfolio_language');
+	function teacher_portfolio_language($post){
+		if( is_plugin_active( "open-badges-framework/open-badges-framework.php" ) ) {
+			// Display the children of the right PARENT
+		    $parents = apply_filters( 'plugin_get_sub', $parents );
+		    echo '<div style="margin-bottom:5px;"><b>Most important languages :</b></div>';
+		    ?>
 
-function add_meta_box_teacher_portfolio_language(){
-	add_meta_box('id_meta_box_teacher_portfolio_language', 'Teacher portfolio language', 'meta_box_teacher_portfolio_language', 'teacher_portfolio', 'side', 'high');
-}
+		    <select name="language" id="language">
+		    	<option value="Select">Select</option>
+			    <?php
+				    foreach ((array)$parents['most-important'] as $language) {
+				    	if( get_post_meta( $post->ID,'_passport_language',true ) == $language->term_id ){
+				    		echo '<option selected="selected" value="' . $language->term_id . '">' . $language->name . '</option>';
+				    	}else{
+				    		echo '<option value="' . $language->term_id . '">' . $language->name . '</option>';
+				    	}
+				    }
+			    ?>
+		    </select>
 
-function meta_box_teacher_portfolio_language($post){
-	if(is_plugin_active("badges-issuer-for-wp/badges-issuer-for-wp.php")) {
-		$val = "";
-		if(get_post_meta($post->ID,'_portfolio_language',true))
-		  $val = get_post_meta($post->ID,'_portfolio_language',true);
+		    <!-- Remove comment to have the list of all fields
+		    <select name="field" id="field"> <option value="Select" selected disabled hidden>Select</option>  -->
+		    <?php
+			    /*foreach ($parents as $parent) {
+			        foreach ($parent as $language) {
+			            echo '<option value="' . $language->term_id . '">';
+			            echo $language->name . '</option>';
+			        }
+			    }*/
+		    ?>
+		    <!-- </select> -->
 
-		display_languages_select_form($category="most-important-languages", $language_selected=$val, $multiple=false);
+			<?php	
+		} 
 	}
 }
+add_action('init', 'metabox_teacher_portfolio_language');
+
+//Add the teacher metabox (teacher realated to this profilling grid)
+function metabox_teach(){
+	add_action('add_meta_boxes', function(){
+		add_meta_box('id_teacher', 'Teacher', 'func_teacher', 'teacher_portfolio', 'side', 'high');
+	});
+
+	function func_teacher($post){
+		$teachers = get_users( [ 'role__in' => [ 'teacher' ] ] ); ?>
+
+		<select name="teacher" id="teacher">
+			<option value="Select">Select</option>
+		    <?php
+		    foreach ( $teachers as $teacher ) {
+		    	if( get_post_meta( $post->ID,'_teacher',true ) == $teacher->ID ){
+		   			echo '<option selected="selected" value="' . $teacher->ID . '">' . $teacher->display_name . '</option>';
+		   		}else{
+		   			echo '<option value="' . $teacher->ID . '">' . $teacher->display_name . '</option>';
+		   		}
+		   	}
+		    ?>
+	    </select>
+
+	    <?php
+	}
+}
+add_action('init', 'metabox_teach');
 
 add_action('save_post', function($id){
 
