@@ -236,6 +236,12 @@ function metabox_teacher()
 
 		<div id="result_content">
 			<center><h1>Current Result</h1></center>
+			<?php
+				echo "Language level : " . get_language_level($post, $value) . "<br>";
+				echo "Qualifications level : " . get_qualifications_level($post, $value) . "<br>";
+				echo "Core Competencies level : " . get_core_competencies_level($post, $value) . "<br>";
+				echo "Complementary Skills level : " . get_complementary_skills_level($post, $value) . "<br>";
+			?>
 		</div>
 
 		<?php include(plugin_dir_path( dirname( __FILE__ ) ) . 'utils/js_teacher_profiling_grid.php'); ?>
@@ -431,6 +437,164 @@ function metabox_teacher()
 }
 add_action('init', 'metabox_teacher');
 
+//Return the language level
+function get_language_level($post, $value){
+	$i = 0;
+	$j = 6;
+
+	while($i <= 5 && in_array( $value.$i, get_post_meta( $post->ID, "teacher_portfolio", true ) ) && $j <= 11 && in_array( $value.$j, get_post_meta( $post->ID, "teacher_portfolio", true ) ) ){
+		$i++;
+		$j++;
+	}
+
+	if( $i == 6 && $j == 12 ){
+		$result = 'T6';
+	}else{
+		switch (true){
+			case ( $i%6 == 0 && $j%6 == 0 ):
+				$result = 'No level';
+				break;
+			case ( $i%6 == 1 && $j%6 == 1 ): 
+				$result = 'T1';
+				break;
+			case ( $i%6 == 2 && $j%6 == 2 ): 
+				$result = 'T2';
+				break;
+			case ( $i%6 == 3 && $j%6 == 3 ): 
+				$result = 'T3';
+				break;
+			case ( $i%6 == 4 && $j%6 == 4 ): 
+				$result = 'T4';
+				break;
+			case ( $i%6 == 5 && $j%6 == 5 ): 
+				$result = 'T5';
+				break;
+		}
+	}
+
+	return $result;
+}
+
+//Return the qualifications level
+function get_qualifications_level($post, $value){
+	$i = 12;
+	$j = 18;
+	$k = 24;
+
+	while($i <= 17 && in_array( $value.$i, get_post_meta( $post->ID, "teacher_portfolio", true ) ) && $j <= 23 && in_array( $value.$j, get_post_meta( $post->ID, "teacher_portfolio", true ) ) && $k <= 29 && in_array( $value.$k, get_post_meta( $post->ID, "teacher_portfolio", true ) ) ){
+		$i++;
+		$j++;
+		$k++;
+	}
+
+	if( $i == 18 && $j == 24 && $k == 30 ){
+		$result = 'T6';
+	}else{
+		switch (true){
+			case ( $i%6 == 0 && $j%6 == 0 && $k%6 == 0 ):
+				$result = 'No level';
+				break;
+			case ( $i%6 == 1 && $j%6 == 1 && $k%6 == 1 ): 
+				$result = 'T1';
+				break;
+			case ( $i%6 == 2 && $j%6 == 2 && $k%6 == 2 ): 
+				$result = 'T2';
+				break;
+			case ( $i%6 == 3 && $j%6 == 3 && $k%6 == 3 ): 
+				$result = 'T3';
+				break;
+			case ( $i%6 == 4 && $j%6 == 4 && $k%6 == 4 ): 
+				$result = 'T4';
+				break;
+			case ( $i%6 == 5 && $j%6 == 5 && $k%6 == 5 ): 
+				$result = 'T5';
+				break;
+		}
+	}
+
+	return $result;
+}
+
+//Return the core competencies level
+function get_core_competencies_level($post, $value){
+	$i = 30;
+	$j = 36;
+	$k = 42;
+	$l = 48;
+
+	while($i <= 35 && in_array( $value.$i, get_post_meta( $post->ID, "teacher_portfolio", true ) ) && $j <= 41 && in_array( $value.$j, get_post_meta( $post->ID, "teacher_portfolio", true ) ) && $k <= 47 && in_array( $value.$k, get_post_meta( $post->ID, "teacher_portfolio", true ) ) && $l <= 53 && in_array( $value.$l, get_post_meta( $post->ID, "teacher_portfolio", true ) ) ){
+		$i++;
+		$j++;
+		$k++;
+		$l++;
+	}
+
+	if( $i == 36 && $j == 42 && $k == 48 && $l == 54 ){
+		$result = 'T6';
+	}else{
+		switch (true){
+			case ( $i%6 == 0 && $j%6 == 0 && $k%6 == 0 && $l%6 == 0 ):
+				$result = 'No level';
+				break;
+			case ( $i%6 == 1 && $j%6 == 1 && $k%6 == 1 && $l%6 == 1 ): 
+				$result = 'T1';
+				break;
+			case ( $i%6 == 2 && $j%6 == 2 && $k%6 == 2 && $l%6 == 2 ): 
+				$result = 'T2';
+				break;
+			case ( $i%6 == 3 && $j%6 == 3 && $k%6 == 3 && $l%6 == 3 ): 
+				$result = 'T3';
+				break;
+			case ( $i%6 == 4 && $j%6 == 4 && $k%6 == 4 && $l%6 == 4 ): 
+				$result = 'T4';
+				break;
+			case ( $i%6 == 5 && $j%6 == 5 && $k%6 == 5 && $l%6 == 5 ): 
+				$result = 'T5';
+				break;
+		}
+	}
+
+	return $result;
+}
+
+//Return the complementary skills level
+function get_complementary_skills_level($post, $value){
+	$i = 54;
+	$j = 60;
+
+	while($i <= 59 && in_array( $value.$i, get_post_meta( $post->ID, "teacher_portfolio", true ) ) && $j <= 65 && in_array( $value.$j, get_post_meta( $post->ID, "teacher_portfolio", true ) ) ){
+		$i++;
+		$j++;
+	}
+
+	if( $i == 60 && $j == 66 ){
+		$result = 'T6';
+	}else{
+		switch (true){
+			case ( $i%6 == 0 && $j%6 == 0 ):
+				$result = 'No level';
+				break;
+			case ( $i%6 == 1 && $j%6 == 1 ): 
+				$result = 'T1';
+				break;
+			case ( $i%6 == 2 && $j%6 == 2 ): 
+				$result = 'T2';
+				break;
+			case ( $i%6 == 3 && $j%6 == 3 ): 
+				$result = 'T3';
+				break;
+			case ( $i%6 == 4 && $j%6 == 4 ): 
+				$result = 'T4';
+				break;
+			case ( $i%6 == 5 && $j%6 == 5 ): 
+				$result = 'T5';
+				break;
+		}
+	}
+
+	return $result;
+}
+
 /* Adds the metabox teacher portfolio language into the badge custom post type */
 function metabox_teacher_portfolio_language(){
 	add_action('add_meta_boxes', function(){
@@ -521,7 +685,36 @@ add_action('save_post', function($id){
 	if(isset($_POST['language']))
 		update_post_meta($post->ID, "_portfolio_language", $_POST['language']);
 
+	if(isset($_POST['teacher']))
+		update_post_meta($post->ID, "_teacher", $_POST['teacher']);
+
 });
+
+// Add the custom columns to the teacher_portfolio post type:
+/*add_filter( 'manage_teacher_portfolio_posts_columns', 'set_custom_edit_teacher_portfolio_columns' );
+function set_custom_edit_teacher_portfolio_columns($columns) {
+    $columns['pf_teacher'] = __( 'Teacher','b4l-portofolio' );
+    $columns['pf_language'] = __( 'Language','b4l-portofolio' );
+
+    return $columns;
+}
+
+// Add the data to the custom columns for the teacher_portfolio post type:
+add_action( 'manage_teacher_portfolio_posts_custom_column' , 'custom_teacher_portfolio_column', 10, 2 );
+function custom_teacher_portfolio_column( $column, $post_id ) {
+    switch ( $column ) {
+
+        case 'pf_teacher' :
+            echo get_post_meta( $post->ID,'_teacher',true );
+            break;
+
+        case 'pf_language' :
+        	$language_id = get_post_meta( $post->ID,'_portfolio_language',true );
+            echo $language_id; 
+            break;
+
+    }
+}*/
 
 ///////////////////////////////////////////////
 ///////////////////////////////////////////////
