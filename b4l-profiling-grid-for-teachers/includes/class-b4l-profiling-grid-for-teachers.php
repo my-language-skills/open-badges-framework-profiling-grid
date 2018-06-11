@@ -123,7 +123,7 @@ class B4l_Profiling_Grid_For_Teachers {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/initialisation/custom_post_teacher_profiling_grid.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/initialisation/custom_roles.php';
 
-		function profiling_grids_admin_menu() {
+		/*function profiling_grids_admin_menu() {
 	    add_menu_page(
 	        'Profiling Grids',
 	        'Profiling Grids',
@@ -135,7 +135,7 @@ class B4l_Profiling_Grid_For_Teachers {
 	    );
 		}
 
-		add_action( 'admin_menu', 'profiling_grids_admin_menu' );
+		add_action( 'admin_menu', 'profiling_grids_admin_menu' );*/
 
 		function profiling_grids_create_directories() {
 			if (!file_exists(plugin_dir_path( dirname( __FILE__ ) ) . '../../uploads/portfolios-grids/teacher-files/'))

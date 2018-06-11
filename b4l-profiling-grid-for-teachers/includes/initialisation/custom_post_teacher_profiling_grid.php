@@ -61,8 +61,8 @@ function custom_post_teacher_portfolio() {
 		'hierarchical'        => false,
 		'public'              => true,
 		'show_ui'             => true,
-		'show_in_menu'        => 'profiling_grids_menu',
 		'show_in_nav_menus'   => true,
+		'menu_icon'			  => plugins_url('../../images/portfolios.png', __FILE__),
 		'show_in_admin_bar'   => true,
 		'menu_position'       => 5,
 		'can_export'          => true,
@@ -80,8 +80,6 @@ function custom_post_teacher_portfolio() {
 			'read_private_posts' => 'read_private_teacher_portfolios',
 			'delete_post' => 'delete_teacher_portfolio'
 		)
-
-		//s'taxonomies'          => array( 'category' ),
 	);
 
 	// Registering your Custom Post Type
