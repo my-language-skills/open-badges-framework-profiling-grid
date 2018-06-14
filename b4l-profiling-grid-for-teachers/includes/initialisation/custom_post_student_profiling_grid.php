@@ -158,28 +158,82 @@ function metabox_student()
 add_action('init', 'metabox_student');
 
 /* Adds the metabox student portfolio language into the badge custom post type */
+function metabox_student_portfolio_language(){
+	add_action('add_meta_boxes', function(){
+		add_meta_box('id_meta_box_student_portfolio_language', 'Teacher portfolio language', 'student_portfolio_language', 'student_portfolio', 'side', 'high');
+	});
 
-add_action('add_meta_boxes','add_meta_box_student_portfolio_language');
+	function student_portfolio_language($post){
+		if( is_plugin_active( "open-badges-framework/open-badges-framework.php" ) ) {
+			// Display the children of the right PARENT
+		    $parents = apply_filters( 'plugin_get_sub', $parents );
+		    echo '<div style="margin-bottom:5px;"><b>Most important languages :</b></div>';
+		    ?>
 
-function add_meta_box_student_portfolio_language(){
-	add_meta_box('id_meta_box_student_portfolio_language', 'Student portfolio language', 'meta_box_student_portfolio_language', 'student_portfolio', 'side', 'high');
-}
+		    <select name="language" id="language">
+		    	<option value="Select">Select</option>
+			    <?php
+				    foreach ((array)$parents['most-important'] as $language) {
+				    	if( get_post_meta( $post->ID,'_passport_language',true ) == $language->term_id ){
+				    		echo '<option selected="selected" value="' . $language->term_id . '">' . $language->name . '</option>';
+				    	}else{
+				    		echo '<option value="' . $language->term_id . '">' . $language->name . '</option>';
+				    	}
+				    }
+			    ?>
+		    </select>
 
-function meta_box_student_portfolio_language($post){
-	if(is_plugin_active("badges-issuer-for-wp/badges-issuer-for-wp.php")) {
-		$val = "";
-		if(get_post_meta($post->ID,'_portfolio_language',true))
-		  $val = get_post_meta($post->ID,'_portfolio_language',true);
+		    <!-- Remove comment to have the list of all fields
+		    <select name="field" id="field"> <option value="Select" selected disabled hidden>Select</option>  -->
+		    <?php
+			    /*foreach ($parents as $parent) {
+			        foreach ($parent as $language) {
+			            echo '<option value="' . $language->term_id . '">';
+			            echo $language->name . '</option>';
+			        }
+			    }*/
+		    ?>
+		    <!-- </select> -->
 
-		display_languages_select_form($category="most-important-languages", $language_selected=$val, $multiple=false);
+			<?php	
+		} 
 	}
 }
+add_action('init', 'metabox_student_portfolio_language');
+
+/* Adds the metabox student portfolio language into the badge custom post type */
+function metabox_student_name(){
+	add_action('add_meta_boxes', function(){
+		add_meta_box('id_student', 'Student', 'student_func', 'student_portfolio', 'side', 'high');
+	});
+
+	function student_func($post){
+		$students = get_users( [ 'role__in' => [ 'student' ] ] ); ?>
+
+		<select name="student" id="student">
+			<option value="Select">Select</option>
+		    <?php
+		    foreach ( $students as $student ) {
+		    	if( get_post_meta( $post->ID,'_student',true ) == $student->ID ){
+		   			echo '<option selected="selected" value="' . $student->ID . '">' . $student->display_name . '</option>';
+		   		}else{
+		   			echo '<option value="' . $student->ID . '">' . $student->display_name . '</option>';
+		   		}
+		   	}
+		    ?>
+	    </select>
+
+	    <?php
+		
+	}
+}
+add_action('init', 'metabox_student_name');
 
 add_action('save_post', function($id){
 	global $post;
 
 	if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
-			return $post->ID;
+		return $post->ID;
 	}
 
 	if(isset($_POST['result'])){
@@ -187,13 +241,18 @@ add_action('save_post', function($id){
 	}
 
 	if(isset($_POST['student_portfolio'])){
-			update_post_meta($post->ID, "student_portfolio", $_POST['student_portfolio']);
+		update_post_meta($post->ID, "student_portfolio", $_POST['student_portfolio']);
 	}
 	else
-			update_post_meta($post->ID, "student_portfolio", array());
+		update_post_meta($post->ID, "student_portfolio", array());
 
-	if(isset($_POST['language']))
+	if(isset($_POST['language'])){
 		update_post_meta($post->ID, "_portfolio_language", $_POST['language']);
+	}
+
+	if(isset($_POST['student'])){
+		update_post_meta($post->ID, "_student", $_POST['student']);
+	}
 
 });
 

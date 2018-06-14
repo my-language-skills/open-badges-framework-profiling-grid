@@ -210,7 +210,50 @@ jQuery( document ).ready(function() {
                     jQuery("#result_upload_files").html(
                       "File uploaded : <br />"+files_string
                     );
+                }
+                else
+                {
+                    // Handle errors here
+                    console.log('ERRORS: ' + data.error);
+                }
+            },
+            error: function(jqXHR, textStatus, errorThrown)
+            {
+                // Handle errors here
+                console.log('ERRORS: ' + textStatus);
+                // STOP LOADING SPINNER
+            }
+        });
+    }
 
+    jQuery('#delete_evidence_button').click(deleteEvidence);
+    function deleteEvidence(event){
+	    tab = jQuery(this).attr('name');
+	    id = jQuery("#post_ID").val();
+    	var data = new FormData();
+
+    	data.append("action", "action_delete_evidence");
+        data.append("post_ID", id);
+        data.append("tab", tab);
+        data.append("type_user", "teacher-files");
+
+        jQuery.ajax({
+            url: "<?php echo plugins_url( '../ajax/custom_ajax.php', __FILE__ ); ?>",
+            type: 'POST',
+            data: data,
+            cache: false,
+            dataType: 'json',
+            processData: false, // Don't process the files
+            contentType: false, // Set content type to false as jQuery will tell the server its a query string request
+            success: function(data, textStatus, jqXHR)
+            {
+                if(typeof data.error === 'undefined')
+                {
+                	var file_string = data.file;
+
+                    jQuery("#result_delete_evidence").html(
+                      "File deleted : <br />"+file_string
+                    );
                 }
                 else
                 {

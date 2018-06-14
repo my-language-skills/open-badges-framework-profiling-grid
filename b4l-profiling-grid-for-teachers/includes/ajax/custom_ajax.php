@@ -22,7 +22,8 @@
     $allowed_actions = array(
         'action_send_badge_portfolio',
         'action_send_badges_student_grid',
-        'action_upload_files'
+        'action_upload_files',
+        'action_delete_evidence'
     );
 
     /* AJAX action to send a badge from a portfolio*/
@@ -61,6 +62,32 @@
           $data = ($error) ? array('error' => 'There was an error uploading your files') : array('files' => $files);
           echo json_encode($data);
       }
+    }
+
+    add_action('CUSTOMAJAX_action_delete_evidence', 'action_delete_evidence');
+
+    function action_delete_evidence() {
+      $data = array();
+      $dir = wp_upload_dir();
+      $file = "";
+      $error = false;
+
+      if( unlink( $dir['basedir'] . '/portfolios-grids/' . $_POST['type_user'] . '/' . get_current_user_id() . '/' . get_post_meta($_POST['post_ID'],$_POST['tab'],true) ) )
+      {
+        $file = get_post_meta( $_POST['post_ID'],$_POST['tab'],true );
+        delete_post_meta( $_POST['post_ID'], $_POST['tab'] );
+      }
+      else if ( get_post_meta( $_POST['post_ID'],$_POST['tab'],true ) )
+      {
+        $file = get_post_meta( $_POST['post_ID'],$_POST['tab'],true );
+        delete_post_meta( $_POST['post_ID'], $_POST['tab'] );
+      }
+      else
+      {
+        $error = true;
+      }
+      $data = ($error) ? array('error' => 'There was an error deleting your files') : array('file' => $file);
+      echo json_encode($data);
     }
 
 
