@@ -160,7 +160,7 @@ add_action('init', 'metabox_student');
 /* Adds the metabox student portfolio language into the badge custom post type */
 function metabox_student_portfolio_language(){
 	add_action('add_meta_boxes', function(){
-		add_meta_box('id_meta_box_student_portfolio_language', 'Teacher portfolio language', 'student_portfolio_language', 'student_portfolio', 'side', 'high');
+		add_meta_box('id_meta_box_student_portfolio_language', 'Student portfolio language', 'student_portfolio_language', 'student_portfolio', 'side', 'high');
 	});
 
 	function student_portfolio_language($post){

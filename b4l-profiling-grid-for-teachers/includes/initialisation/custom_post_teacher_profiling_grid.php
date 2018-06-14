@@ -234,6 +234,7 @@ function metabox_teacher()
 			Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
 		</p>
 
+		<!-- Level aquired for each section -->
 		<div id="result_content">
 			<center><h1>Current Result</h1></center>
 			<?php
@@ -295,13 +296,17 @@ function metabox_teacher()
 
 				Evidence :
 				<?php
-					//$dir = wp_upload_dir();
+					//If a file is already uploaded we allows the user to show the evidence or to delete it
 					if(get_post_meta($post->ID,'file_tab_a',true)){
+
 						echo get_post_meta($post->ID,'file_tab_a',true);
 				 ?>
+
 						<br>
 						<div style="margin-top: 5px;">
+							<!-- Show the evidence (by clickin, open the file in a new tab) -->
 							<input id="show_evidence" type="button" class="button button-primary" value="Show Evidence" onclick="window.open('<?php echo content_url() . '/uploads/portfolios-grids/teacher-files/' . get_current_user_id() . '/' . get_post_meta($post->ID,'file_tab_a',true) . ''; ?>')"/>
+							<!-- Delete the evidence (delete the file on the server) -->
 							<input id="delete_evidence_button" name="file_tab_a" type="button" class="button button-secondary" value="Delete Evidence" />
 							<div id="result_delete_evidence">
 								
@@ -309,17 +314,16 @@ function metabox_teacher()
 						</div>
 
 					<?php
-						/*if( unlink( $dir['basedir'] . '/portfolios-grids/teacher-files/' . get_current_user_id() . '/' . get_post_meta($post->ID,'file_tab_a',true) ) ){
-							echo 'Deleted';
 
-						} else {
-							echo $dir['basedir'] . '/portfolios-grids/teacher-files/' . get_current_user_id() . '/' . get_post_meta($post->ID,'file_tab_a',true);
-						}*/
-					} else{
+					} 
+					//IF not, we allows the user to upload a file
+					else{
+
 						echo ' <input name="file_tab_a" accept=".pdf, .png, .jpeg, .jpg" type="file"/>';
 						echo '<div id="result_upload_files">
 								<input id="upload_files_button" type="button" class="button button-primary" value="Upload file" />
 							</div>';
+
 					}
 					
 				?>
@@ -728,6 +732,7 @@ function metabox_teach(){
 }
 add_action('init', 'metabox_teach');
 
+//Save the metaboxes
 add_action('save_post', function($id){
 
 	global $post;
