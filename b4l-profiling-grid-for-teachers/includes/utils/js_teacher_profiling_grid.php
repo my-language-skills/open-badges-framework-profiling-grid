@@ -254,6 +254,8 @@ jQuery( document ).ready(function() {
                     jQuery("#result_delete_evidence").html(
                       "File deleted : <br />"+file_string
                     );
+
+                    location.reload();
                 }
                 else
                 {

@@ -41,7 +41,7 @@
           $error = false;
           $files = array();
 
-          $uploaddir = plugin_dir_path( dirname( __FILE__ ) ) . '../../../uploads/portfolios-grids/'.$_POST['type_user'].'/';
+          $uploaddir = plugin_dir_path( dirname( __FILE__ ) ) . '../../../uploads/profiling-grids/'.$_POST['type_user'].'/';
           $uploaddir = $uploaddir.get_current_user_id().'/';
 
           if (!file_exists($uploaddir))
