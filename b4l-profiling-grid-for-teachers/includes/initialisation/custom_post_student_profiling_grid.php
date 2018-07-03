@@ -31,25 +31,25 @@ function custom_post_student_portfolio() {
 
 // Set UI labels for Custom Post Type
 	$labels = array(
-		'name'                => 'Student Profiling Grid',
-		'singular_name'       => 'Student Profiling Grid',
-		'menu_name'           => 'Student Profiling Grid',
-		'parent_item_colon'   => 'Parent Student Profiling Grid',
-		'all_items'           => 'Student Profiling Grids',
-		'view_item'           => 'View Student Profiling Grid',
-		'add_new_item'        => 'Add New Student Profiling Grid',
-		'edit_item'           => 'Edit Student Profiling Grid',
-		'update_item'         => 'Update Student Profiling Grid',
-		'search_items'        => 'Search Student Profiling Grids',
-		'not_found'           => 'Not Found',
-		'not_found_in_trash'  => 'Not found in Trash'
+		'name'                => __('Student Profiling Grid','b4l-profiling-grid-for-teachers'),
+		'singular_name'       => __('Student Profiling Grid','b4l-profiling-grid-for-teachers'),
+		'menu_name'           => __('Student Profiling Grid','b4l-profiling-grid-for-teachers'),
+		'parent_item_colon'   => __('Parent Student Profiling Grid','b4l-profiling-grid-for-teachers'),
+		'all_items'           => __('Student Profiling Grids','b4l-profiling-grid-for-teachers'),
+		'view_item'           => __('View Student Profiling Grid','b4l-profiling-grid-for-teachers'),
+		'add_new_item'        => __('Add New Student Profiling Grid','b4l-profiling-grid-for-teachers'),
+		'edit_item'           => __('Edit Student Profiling Grid','b4l-profiling-grid-for-teachers'),
+		'update_item'         => __('Update Student Profiling Grid','b4l-profiling-grid-for-teachers'),
+		'search_items'        => __('Search Student Profiling Grids','b4l-profiling-grid-for-teachers'),
+		'not_found'           => __('Not Found','b4l-profiling-grid-for-teachers'),
+		'not_found_in_trash'  => __('Not found in Trash','b4l-profiling-grid-for-teachers')
 	);
 
 // Set other options for Custom Post Type
 
 	$args = array(
 		'label'               => 'student_portfolio',
-		'description'         => 'A custom post to assign language levels to students based on their proficiency.',
+		'description'         => __('A custom post to assign language levels to students based on their proficiency.','b4l-profiling-grid-for-teachers'),
 		'labels'              => $labels,
 		// Features this CPT supports in Post Editor
 		'supports'            => array( 'title', 'editor'),
@@ -97,7 +97,7 @@ add_action( 'init', 'custom_post_student_portfolio');
 function metabox_student()
 {
 	add_action('add_meta_boxes', function(){
-		add_meta_box('student', 'Student Grid Badges', 'student_grades', 'student_portfolio');
+		add_meta_box('student', __('Student Grid Badges','b4l-profiling-grid-for-teachers'), 'student_grades', 'student_portfolio');
 	});
 
 	function student_grades($post){
@@ -105,30 +105,30 @@ function metabox_student()
 		include(plugin_dir_path( dirname( __FILE__ ) ) . 'utils/style.php');
 
 		$descriptions = array(
-			'A1' => "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+			'A1' => __("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 			Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 			Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-			Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-			'A2' => "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+			Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",'b4l-profiling-grid-for-teachers'),
+			'A2' => __("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 			Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 			Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-			Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-			'B1' => "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+			Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",'b4l-profiling-grid-for-teachers'),
+			'B1' => __("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 			Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 			Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-			Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-			'B2' => "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+			Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",'b4l-profiling-grid-for-teachers'),
+			'B2' => __("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 			Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 			Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-			Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-			'C1' => "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+			Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",'b4l-profiling-grid-for-teachers'),
+			'C1' => __("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 			Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 			Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-			Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-			'C2' => "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+			Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",'b4l-profiling-grid-for-teachers'),
+			'C2' => __("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 			Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 			Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-			Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+			Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",'b4l-profiling-grid-for-teachers')
 		);
 
 		foreach ($descriptions as $level=>$description) {
@@ -149,7 +149,7 @@ function metabox_student()
 			?>
 			<br />
 			<div id="result_send_badge_student_grid">
-				<input type="button" id="send_badges_student_grid" onclick="javascript:sendBadgesStudentGrid('<?php echo get_post_meta($post->ID,'_portfolio_language',true); ?>')" class="button button-primary" value="Send badges to yourself" />
+				<input type="button" id="send_badges_student_grid" onclick="javascript:sendBadgesStudentGrid('<?php echo get_post_meta($post->ID,'_portfolio_language',true); ?>')" class="button button-primary" value="<?php _e('Send badges to yourself','b4l-profiling-grid-for-teachers'); ?>" />
 			</div>
 		<?php
 	}
@@ -160,14 +160,16 @@ add_action('init', 'metabox_student');
 /* Adds the metabox student portfolio language into the badge custom post type */
 function metabox_student_portfolio_language(){
 	add_action('add_meta_boxes', function(){
-		add_meta_box('id_meta_box_student_portfolio_language', 'Student portfolio language', 'student_portfolio_language', 'student_portfolio', 'side', 'high');
+		add_meta_box('id_meta_box_student_portfolio_language', __('Student portfolio language','b4l-profiling-grid-for-teachers'), 'student_portfolio_language', 'student_portfolio', 'side', 'high');
 	});
 
 	function student_portfolio_language($post){
 		if( is_plugin_active( "open-badges-framework/open-badges-framework.php" ) ) {
 			// Display the children of the right PARENT
 		    $parents = apply_filters( 'plugin_get_sub', $parents );
-		    echo '<div style="margin-bottom:5px;"><b>Most important languages :</b></div>';
+		    echo '<div style="margin-bottom:5px;"><b>';
+		    _e('Most important languages :','b4l-profiling-grid-for-teachers');
+		    echo '</b></div>';
 		    ?>
 
 		    <select name="language" id="language">
@@ -204,7 +206,7 @@ add_action('init', 'metabox_student_portfolio_language');
 /* Adds the metabox student portfolio language into the badge custom post type */
 function metabox_student_name(){
 	add_action('add_meta_boxes', function(){
-		add_meta_box('id_student', 'Student', 'student_func', 'student_portfolio', 'side', 'high');
+		add_meta_box('id_student', __('Student','b4l-profiling-grid-for-teachers'), 'student_func', 'student_portfolio', 'side', 'high');
 	});
 
 	function student_func($post){
@@ -263,8 +265,8 @@ add_action('admin_menu', 'sp_profiling_grid_add_settings');
 function sp_profiling_grid_add_settings(){
 	add_submenu_page(
 		'edit.php?post_type=student_portfolio',
-		'Create portfolio',
-		'Settings',
+		__('Create portfolio','b4l-profiling-grid-for-teachers'),
+		__('Settings','b4l-profiling-grid-for-teachers'),
 		'manage_options',
 		'create_portfolio',
 		'create_profiling_grid_callback' );

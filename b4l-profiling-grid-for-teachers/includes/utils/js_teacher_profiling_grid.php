@@ -11,7 +11,7 @@ function printResult(badge) {
 
   <?php
   global $post;
-  if(is_plugin_active("badges-issuer-for-wp/badges-issuer-for-wp.php")) {
+  if(is_plugin_active("open-badges-framework/open-badges-framework.php")) {
   ?>
     var content = content+'<center><button onclick="sendBadgePortfolio'+"('"+badge+"', '<?php echo get_post_meta($post->ID,'_portfolio_language',true); ?>')"+'">Send this badge to yourself</button></center><br />';
   <?php
