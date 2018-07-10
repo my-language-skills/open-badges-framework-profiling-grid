@@ -264,6 +264,7 @@ jQuery( document ).ready(function() {
                 else
                 {
                     // Handle errors here
+                    jQuery("#result_delete_evidence").html(data.error);
                     console.log('ERRORS: ' + data.error);
                 }
             },
