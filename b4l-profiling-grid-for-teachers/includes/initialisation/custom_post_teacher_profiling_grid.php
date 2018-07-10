@@ -229,7 +229,7 @@ function metabox_teacher()
 
 		<p>
 			<?php
-			__("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+			_e("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 			Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 			Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
 			Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",'b4l-profiling-grid-for-teachers');
@@ -238,7 +238,7 @@ function metabox_teacher()
 
 		<!-- Level aquired for each section -->
 		<div id="result_content">
-			<center><h1><?php __('Current Result','b4l-profiling-grid-for-teachers'); ?></h1></center>
+			<center><h1><?php _e('Current Result','b4l-profiling-grid-for-teachers'); ?></h1></center>
 			<?php
 				echo __("Language level : ",'b4l-profiling-grid-for-teachers') . get_language_level($post, $value) . "<br>";
 				echo __("Qualifications level : ",'b4l-profiling-grid-for-teachers') . get_qualifications_level($post, $value) . "<br>";
