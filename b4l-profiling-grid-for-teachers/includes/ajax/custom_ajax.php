@@ -72,12 +72,7 @@
       $file = "";
       $error = false;
 
-      if( unlink( $dir['basedir'] . '/portfolios-grids/' . $_POST['type_user'] . '/' . get_current_user_id() . '/' . get_post_meta($_POST['post_ID'],$_POST['tab'],true) ) )
-      {
-        $file = get_post_meta( $_POST['post_ID'],$_POST['tab'],true );
-        delete_post_meta( $_POST['post_ID'], $_POST['tab'] );
-      }
-      else if ( get_post_meta( $_POST['post_ID'],$_POST['tab'],true ) )
+      if( unlink( $dir['basedir'] . '/profiling-grids/' . $_POST['type_user'] . '/' . get_current_user_id() . '/' . get_post_meta($_POST['post_ID'],$_POST['tab'],true) ) )
       {
         $file = get_post_meta( $_POST['post_ID'],$_POST['tab'],true );
         delete_post_meta( $_POST['post_ID'], $_POST['tab'] );

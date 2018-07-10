@@ -307,7 +307,7 @@ function metabox_teacher()
 						<br>
 						<div style="margin-top: 5px;">
 							<!-- Show the evidence (by clickin, open the file in a new tab) -->
-							<input id="show_evidence" type="button" class="button button-primary" value="Show Evidence" onclick="window.open('<?php echo content_url() . '/uploads/portfolios-grids/teacher-files/' . get_current_user_id() . '/' . get_post_meta($post->ID,'file_tab_a',true) . ''; ?>')"/>
+							<input id="show_evidence" type="button" class="button button-primary" value="Show Evidence" onclick="window.open('<?php echo content_url() . '/uploads/profiling-grids/teacher-files/' . get_current_user_id() . '/' . get_post_meta($post->ID,'file_tab_a',true) . ''; ?>')"/>
 							<!-- Delete the evidence (delete the file on the server) -->
 							<input id="delete_evidence_button" name="file_tab_a" type="button" class="button button-secondary" value="<?php _e('Delete Evidence','b4l-profiling-grid-for-teachers'); ?>" />
 							<div id="result_delete_evidence">
@@ -321,6 +321,9 @@ function metabox_teacher()
 					//IF not, we allows the user to upload a file
 					else{ ?>
 						<input name="file_tab_a" accept=".pdf, .png, .jpeg, .jpg" type="file"/>
+						<div id="error-content">
+
+						</div>
 						<div id="result_upload_files">
 							<input id="upload_files_button" type="button" class="button button-primary" value="<?php _e('Upload file','b4l-profiling-grid-for-teachers'); ?>" />
 						</div>
@@ -369,7 +372,7 @@ function metabox_teacher()
 				 ?>
 						<br>
 						<div style="margin-top: 5px;">
-							<input id="show_evidence" type="button" class="button button-primary" value="Show Evidence" onclick="window.open('<?php echo content_url() . '/uploads/portfolios-grids/teacher-files/' . get_current_user_id() . '/' . get_post_meta($post->ID,'file_tab_b',true) . ''; ?>')"/>
+							<input id="show_evidence" type="button" class="button button-primary" value="Show Evidence" onclick="window.open('<?php echo content_url() . '/uploads/profiling-grids/teacher-files/' . get_current_user_id() . '/' . get_post_meta($post->ID,'file_tab_b',true) . ''; ?>')"/>
 
 							<input id="delete_evidence_button" name="file_tab_b" type="button" class="button button-secondary" value="Delete Evidence" />
 							<div id="result_delete_evidence">
@@ -377,11 +380,15 @@ function metabox_teacher()
 							</div>
 						</div>
 					<?php
-					} else{
-						echo ' <input name="file_tab_b" accept=".pdf, .png, .jpeg, .jpg" type="file"/>';
-						echo '<div id="result_upload_files">
-								<input id="upload_files_button" type="button" class="button button-primary" value="Upload file" />
-							</div>';
+					} else{ ?>
+						<input name="file_tab_b" accept=".pdf, .png, .jpeg, .jpg" type="file"/>
+						<div id="error-content">
+							
+						</div>
+						<div id="result_upload_files">
+							<input id="upload_files_button" type="button" class="button button-primary" value="<?php _e('Upload file','b4l-profiling-grid-for-teachers'); ?>" />
+						</div>
+					<?php
 					}
 				?>
 			</div>
@@ -435,7 +442,7 @@ function metabox_teacher()
 				 ?>
 						<br>
 						<div style="margin-top: 5px;">
-							<input id="show_evidence" type="button" class="button button-primary" value="Show Evidence" onclick="window.open('<?php echo content_url() . '/uploads/portfolios-grids/teacher-files/' . get_current_user_id() . '/' . get_post_meta($post->ID,'file_tab_c',true) . ''; ?>')"/>
+							<input id="show_evidence" type="button" class="button button-primary" value="Show Evidence" onclick="window.open('<?php echo content_url() . '/uploads/profiling-grids/teacher-files/' . get_current_user_id() . '/' . get_post_meta($post->ID,'file_tab_c',true) . ''; ?>')"/>
 							
 							<input id="delete_evidence_button" name="file_tab_c" type="button" class="button button-secondary" value="Delete Evidence" />
 							<div id="result_delete_evidence">
@@ -443,11 +450,15 @@ function metabox_teacher()
 							</div>
 						</div>
 					<?php
-					} else{
-						echo ' <input name="file_tab_c" accept=".pdf, .png, .jpeg, .jpg" type="file"/>';
-						echo '<div id="result_upload_files">
-								<input id="upload_files_button" type="button" class="button button-primary" value="Upload file" />
-							</div>';
+					} else{ ?>
+						<input name="file_tab_c" accept=".pdf, .png, .jpeg, .jpg" type="file"/>
+						<div id="error-content">
+							
+						</div>
+						<div id="result_upload_files">
+							<input id="upload_files_button" type="button" class="button button-primary" value="<?php _e('Upload file','b4l-profiling-grid-for-teachers'); ?>" />
+						</div>
+					<?php
 					}
 				?>
 			</div>
@@ -481,7 +492,7 @@ function metabox_teacher()
 				 ?>
 						<br>
 						<div style="margin-top: 5px;">
-							<input id="show_evidence" type="button" class="button button-primary" value="Show Evidence" onclick="window.open('<?php echo content_url() . '/uploads/portfolios-grids/teacher-files/' . get_current_user_id() . '/' . get_post_meta($post->ID,'file_tab_d',true) . ''; ?>')"/>
+							<input id="show_evidence" type="button" class="button button-primary" value="Show Evidence" onclick="window.open('<?php echo content_url() . '/uploads/profiling-grids/teacher-files/' . get_current_user_id() . '/' . get_post_meta($post->ID,'file_tab_d',true) . ''; ?>')"/>
 							
 							<input id="delete_evidence_button" name="file_tab_d" type="button" class="button button-secondary" value="Delete Evidence" />
 							<div id="result_delete_evidence">
@@ -489,11 +500,15 @@ function metabox_teacher()
 							</div>
 						</div>
 					<?php
-					} else{
-						echo ' <input name="file_tab_d" accept=".pdf, .png, .jpeg, .jpg" type="file"/>';
-						echo '<div id="result_upload_files">
-								<input id="upload_files_button" type="button" class="button button-primary" value="Upload file" />
-							</div>';
+					} else{ ?>
+						<input name="file_tab_d" accept=".pdf, .png, .jpeg, .jpg" type="file"/>
+						<div id="error-content">
+							
+						</div>
+						<div id="result_upload_files">
+							<input id="upload_files_button" type="button" class="button button-primary" value="<?php _e('Upload file','b4l-profiling-grid-for-teachers'); ?>" />
+						</div>
+					<?php
 					}
 				?>
 			</div>

@@ -137,13 +137,6 @@ class B4l_Profiling_Grid_For_Teachers {
 
 		add_action( 'admin_menu', 'profiling_grids_admin_menu' );*/
 
-		function profiling_grids_create_directories() {
-			if (!file_exists(plugin_dir_path( dirname( __FILE__ ) ) . '../../uploads/portfolios-grids/teacher-files/'))
-    		mkdir(plugin_dir_path( dirname( __FILE__ ) ) . '../../uploads/portfolios-grids/teacher-files/', 0777, true);
-		}
-
-		add_action( 'init', 'profiling_grids_create_directories' );
-
 		$this->loader = new B4l_Profiling_Grid_For_Teachers_Loader();
 
 	}

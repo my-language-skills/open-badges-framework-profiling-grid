@@ -171,6 +171,7 @@ jQuery( document ).ready(function() {
     // Catch the form submit and upload the files
     function uploadFiles(event)
     {
+        jQuery("#error-content").html('');
         console.log("in upload");
         event.stopPropagation(); // Stop stuff happening
         event.preventDefault(); // Totally stop stuff happening
@@ -188,42 +189,45 @@ jQuery( document ).ready(function() {
         data.append("tab", tab);
         data.append("type_user", "teacher-files");
 
-        jQuery("#result_upload_files").html("<img src='<?php echo plugins_url( '../../images/sending.gif', __FILE__ ); ?>' width='50px' height='50px' />");
-
-        jQuery.ajax({
-            url: "<?php echo plugins_url( '../ajax/custom_ajax.php', __FILE__ ); ?>",
-            type: 'POST',
-            data: data,
-            cache: false,
-            dataType: 'json',
-            processData: false, // Don't process the files
-            contentType: false, // Set content type to false as jQuery will tell the server its a query string request
-            success: function(data, textStatus, jqXHR)
-            {
-                if(typeof data.error === 'undefined')
+        if (typeof files == 'undefined' || files.length <= 0) {
+            jQuery("#error-content").html('Please select a file.');
+        } else {
+            jQuery("#result_upload_files").html("<img src='<?php echo plugins_url( '../../images/sending.gif', __FILE__ ); ?>' width='50px' height='50px' />");
+            jQuery.ajax({
+                url: "<?php echo plugins_url( '../ajax/custom_ajax.php', __FILE__ ); ?>",
+                type: 'POST',
+                data: data,
+                cache: false,
+                dataType: 'json',
+                processData: false, // Don't process the files
+                contentType: false, // Set content type to false as jQuery will tell the server its a query string request
+                success: function(data, textStatus, jqXHR)
                 {
-                    var files_string = "";
-                    data.files.forEach(function(element){
-                        files_string = files_string + element + "<br />";
-                    });
+                    if(typeof data.error === 'undefined')
+                    {
+                        var files_string = "";
+                        data.files.forEach(function(element){
+                            files_string = files_string + element + "<br />";
+                        });
 
-                    jQuery("#result_upload_files").html(
-                      "File uploaded : <br />"+files_string
-                    );
-                }
-                else
+                        jQuery("#result_upload_files").html(
+                          "File uploaded : <br />"+files_string
+                        );
+                    }
+                    else
+                    {
+                        // Handle errors here
+                        console.log('ERRORS: ' + data.error);
+                    }
+                },
+                error: function(jqXHR, textStatus, errorThrown)
                 {
                     // Handle errors here
-                    console.log('ERRORS: ' + data.error);
+                    console.log('ERRORS: ' + textStatus);
+                    // STOP LOADING SPINNER
                 }
-            },
-            error: function(jqXHR, textStatus, errorThrown)
-            {
-                // Handle errors here
-                console.log('ERRORS: ' + textStatus);
-                // STOP LOADING SPINNER
-            }
-        });
+            });
+        }
     }
 
     jQuery('#delete_evidence_button').click(deleteEvidence);
