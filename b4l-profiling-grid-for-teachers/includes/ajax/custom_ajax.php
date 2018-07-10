@@ -26,8 +26,7 @@
         'action_delete_evidence'
     );
 
-    /* AJAX action to send a badge from a portfolio*/
-
+    /* AJAX action to upload an evidence in the teacher profiling grid*/
     add_action('CUSTOMAJAX_action_upload_files', 'action_upload_files');
 
     function action_upload_files() {
@@ -64,6 +63,7 @@
       }
     }
 
+    /* AJAX action to delete an evidence in the teacher profiling grid*/
     add_action('CUSTOMAJAX_action_delete_evidence', 'action_delete_evidence');
 
     function action_delete_evidence() {
@@ -85,7 +85,7 @@
       echo json_encode($data);
     }
 
-
+    /* AJAX action to send a badge from a portfolio*/
     add_action('CUSTOMAJAX_action_send_badge_portfolio', 'action_send_badge_portfolio');
 
     function action_send_badge_portfolio() {
@@ -117,6 +117,7 @@
         echo "<img src='".plugins_url( '../../images/not_sended.png', __FILE__ )."' width='200px' height='190px' />";
     }
 
+    /* AJAX action to send a badge from a grid*/
     add_action('CUSTOMAJAX_action_send_badges_student_grid', 'action_send_badges_student_grid');
 
     function action_send_badges_student_grid() {
